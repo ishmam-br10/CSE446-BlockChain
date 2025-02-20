@@ -131,6 +131,8 @@ console.log(add(5, 6))
 const sum2 = (num1, num2) => num1 + num2
 console.log(sum2(11, 12))
 
+const sumMao = (num1, num2) => num1 + num2
+console.log(sumMao(56, 12))
 // loop
 // for loop, for in loop, for of loop
 
