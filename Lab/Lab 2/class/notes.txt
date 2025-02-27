@@ -1,0 +1,5 @@
+POW ---> BTC
+POS ---> Etherium
+
+User --> Mining Pool --> Miner --> Block
+User pays Gas Fee
