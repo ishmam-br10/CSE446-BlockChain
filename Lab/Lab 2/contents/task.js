@@ -71,7 +71,14 @@ function mine( miner, chainNetwork ){
             4) loop through all the property of the miningPool of chainNetwork and repeat 1 - 4
         */  
 
-        // Code here.........
+        chainNetwork.miningPool.forEach(poolData => {
+            const pendingBlock = poolData.newBlock;
+            pendingBlock.previousHash = getTheLatestBlock(chainNetwork).blockHash;
+            chainNetwork.blockchain.push(pendingBlock);
+        });
+
+        // Clear the mining pool after mining
+        chainNetwork.miningPool = [];
         
         
         // YOU SHOULD WRITE CODE FOR STEP 5 ABOVE THIS LINE
@@ -101,6 +108,8 @@ function sendReqToPool( userData, sender, chainNetwork ){
     ##########################################################################################################################################################################*/
 
     // Code Here..........
+    const blockNo = chainNetwork.blockchain.length + chainNetwork.miningPool.length;
+    const newBlock = createNewBlock(blockNo, new Date(), userData, getTheLatestBlock(chainNetwork).blockHash);
 
     // YOU CODE SHOULD BE AVOBE THIS LINE
     const poolData = { newBlock, sender }
@@ -169,6 +178,7 @@ const appUser = createUserAccount('0x1234')
 // Create a miner from here:
 
 // code here........
+const miner = createUserAccount('0x11111');
 
 // Your code should be above this line
 
@@ -188,7 +198,9 @@ const firstStudentData =  {
 // ############## check the createTransactionRequest function how it is defined. Now call the function below: 
 // This function will send student data, appUser(wallet user/ sender) and bracuChainNetwork
 
-// code here........
+// This function will send student data, appUser(wallet user/ sender) and bracuChainNetwork
+createTransactionRequest(firstStudentData, appUser, bracuChainNetwork, 0);
+
 
 //  Code for createTransactionRequest function call should be above this line
 
@@ -214,6 +226,7 @@ const firstStudentData =  {
 // ############## check the checkNetWorkStatus function how it is defined. Now call the function below: 
 
 // code here........
+checkNetWorkStatus(bracuChainNetwork, appUser, miner);
 
 // ################# Code for checkNetWorkStatus function call should be ablove this line.
 
@@ -251,7 +264,7 @@ const firstStudentData =  {
 // CALL mine FUNCTION BELOW
 
 // code here...
-
+mine(miner, bracuChainNetwork);
 
 // YOUR FUNCTION CALL SHOULD BE DONE BY THIS LINE
 
