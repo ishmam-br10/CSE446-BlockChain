@@ -315,9 +315,7 @@ mine(miner, bracuChainNetwork);
 /**#####################################################################################################
 **************************************** STEP 9 ********************************************************
 ** NOW, ADD TWO MORE BLOCK AND MINE IT. YOU WILL SEE SOMETHING LIKE IMAGE_5 
-** SHOW IT TO YOUR TEACHER WHEN YOUR ARE DONE.
-
-//  Your code goes here....
+** SHOW IT TO YOUR TEACHER WHEN YOUR ARE DONE.*/
 
 const secondStudentData =  {
     studentID: "22301229",
@@ -330,7 +328,7 @@ const thirdStudentData =  {
 
 createTransactionRequest(secondStudentData, appUser, bracuChainNetwork);
 createTransactionRequest(thirdStudentData, appUser, bracuChainNetwork);
-mine(miner braceChainNetwork);
+mine(miner, bracuChainNetwork);
 
 /**#####################################################################################################
 ** $$$$$$$$$$$$$$$$$$$$$$$$ CHECKPOINT: 5 $$$$$$$$$$$$$$$$$$$$$$$$
