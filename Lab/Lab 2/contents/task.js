@@ -319,6 +319,19 @@ mine(miner, bracuChainNetwork);
 
 //  Your code goes here....
 
+const secondStudentData =  {
+    studentID: "22301229",
+    cgpa: '3.0'
+}
+const thirdStudentData =  {
+    studentID: "22101878",
+    cgpa: '3.0'
+}
+
+createTransactionRequest(secondStudentData, appUser, bracuChainNetwork);
+createTransactionRequest(thirdStudentData, appUser, bracuChainNetwork);
+mine(miner braceChainNetwork);
+
 /**#####################################################################################################
 ** $$$$$$$$$$$$$$$$$$$$$$$$ CHECKPOINT: 5 $$$$$$$$$$$$$$$$$$$$$$$$
 **
