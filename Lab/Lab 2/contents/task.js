@@ -75,10 +75,13 @@ function mine( miner, chainNetwork ){
             const pendingBlock = poolData.newBlock;
             pendingBlock.previousHash = getTheLatestBlock(chainNetwork).blockHash;
             chainNetwork.blockchain.push(pendingBlock);
+
+            // balance deduct [Checkpoint 4]
+            appUser.balance -= 5;
+            miner.balance += 5;
         });
 
-        // Clear the mining pool after mining
-        chainNetwork.miningPool = [];
+        
         
         
         // YOU SHOULD WRITE CODE FOR STEP 5 ABOVE THIS LINE
@@ -90,6 +93,8 @@ function mine( miner, chainNetwork ){
         * #####################################*/
        
         //  code here for step 7...........
+        // Clear the mining pool after mining
+        chainNetwork.miningPool = [];
 
         // YOU SHOULD WRITE CODE FOR STEP 7 ABOVE THIS LINE 
         console.log('******** Blockchain Updated **********')
