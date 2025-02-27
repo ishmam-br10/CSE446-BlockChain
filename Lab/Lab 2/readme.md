@@ -1,0 +1,1 @@
+This is my Blockchain Lab 2. Here we created a mock blockchain network with mock miner and mock user. Then we transacted using this network.
