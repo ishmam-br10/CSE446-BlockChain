@@ -1,7 +1,9 @@
 //Write a smart contract that stores student id and the name of the student. 
 //Also create a separate function that takes studentID and returns student name. 
 //[ You must use mapping ]
-
+/// SPDX-License-Identifier: MIT
+/// @author: Ishmam Rofi
+/// @title: Checkpoint 2
 pragma solidity >= 0.8.2 <0.9.0;
 
 contract Checkpoint2 {

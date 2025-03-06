@@ -1,3 +1,6 @@
+/// SPDX-License-Identifier: MIT
+/// @author: Ishmam Rofi
+/// @title: Checkpoint 3
 pragma solidity >= 0.8.2 <0.9.0;
 
 //Write a smart contract that stores gpa, studentID, semesterName,

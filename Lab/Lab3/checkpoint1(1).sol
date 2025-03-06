@@ -1,3 +1,7 @@
+/// SPDX-License-Identifier: MIT
+/// @author: Ishmam Rofi
+/// @title: Checkpoint 1.1
+
 pragma solidity >= 0.8.2 <0.9.0;
 // Create a function that takes your studentID of integer value and returns your name. 
 //If you enter the ID of any other student, it should return “This is not your ID”. 
