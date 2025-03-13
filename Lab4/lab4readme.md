@@ -1,0 +1,3 @@
+Part Two of the solidity, here are the resources
+
+https://doc-10-a0-apps-viewer.googleusercontent.com/viewer/secure/pdf/3nb9bdfcv3e2h2k1cmql0ee9cvc5lole/an8k6pitkim79ohn3h6ngt04q157neib/1741850550000/drive/*/ACFrOgCVYLjhPQW_5fCmhJgrQB3-Ulm81I-zbL3fgW2uUCg4rqX4LRYK2gHRAo9peF8bw6pmdjMATUuPdSQicB75zxNGYqlUbImB8M3HSDp0H3SdrzopCLjSlOaQoFhNxrxh_UfL3IItn4GkLnXMclKmsLeXvCj6TXyTKG0MmLiDyWCv3DwqQYXM1ykhoX2-6t9YWN9FMxYU366LwAJT?print=true
