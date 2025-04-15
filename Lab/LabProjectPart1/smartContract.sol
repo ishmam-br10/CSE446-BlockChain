@@ -98,4 +98,46 @@ contract LokJonHarayGese{
         string memory roleStr = _role == ROLE.CIVILIAN ? "CIVILIAN" : "FEDRA";
         emit CustomerRegistrationKorse(msg.sender, roleStr);
     }
+
+    # core function 2: Report missing
+    function harayJawaReportKorseJe(
+        string memory nameOfLost,
+        uint256 ageOfLost,
+        uint256 heightOfLost,
+        string memory DescriptionOfLost,
+        string memory DivisionOfLost,
+        string memory ContactWhom
+    ) public {
+        require(customers[msg.sender].role == ROLE.CIVILIAN, "Anomaly can be reported ONLY by CIVILIANS.")
+
+        URGENCY urgencyLevel;
+        if (ageOfLost < 18){
+            urgencyLevel = URGENCY.max;
+        }
+        else if(ageOfLost > 50){
+            urgencyLevel = URGENCY.mid;
+        }
+        else{
+            urgencyLevel = URGENCY.min;
+        }
+
+        harayGeseJe memory newCase = harayGeseJe({
+            CaseNum: NextCaseNum,
+            nameOfLost: nameOfLost,
+            ageOfLost: ageOfLost,
+            heightOfLost: heightOfLost,
+            status: STATUS.HarayGese,
+            DescriptionOfLost: DescriptionOfLost,
+            DivisionOfLost: DivisionOfLost,
+            ContactWhom: ContactWhom,
+            urgency: urgencyLevel,
+            fedra: address(0)
+        })
+
+        cases[NextCaseNum] = newCase;
+        DivisionCount[DivisionOfLost]++;
+        emit HarayJawaReported(NextCaseNum);
+        NextCaseNum++;
+    }
+    
 }
