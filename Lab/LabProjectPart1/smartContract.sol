@@ -53,7 +53,7 @@ contract LokJonHarayGese{
 
     // appointments details
     mapping(address => AppointmentForMissing[]) public FedraSchedule;
-    mapping(uint256 => mapping(address => bool)) public SlotBooked
+    mapping(uint256 => mapping(address => bool)) public SlotBooked;
 
     // event tracker for functions
     event CustomerRegistrationKorse(address customer, string role);
@@ -83,4 +83,19 @@ contract LokJonHarayGese{
         customers[msg.sender] = customer("ADMIN", "N/A", ROLE.ADMIN, msg.sender);
     }
 
+    // ============= Core 
+    // Registered user 
+    function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public{
+        require(customers[msg.sender].role == ROLE.None, "Already registered");
+        require(_role == ROLE.CIVILIAN || _role == ROLE>FEDRA, "The Role is INVALID");
+
+        customers[msg.sender] = customer({
+            name: _name,
+            NIDnumber: _NIDcard,
+            role: _role,
+            thikanaOfUser: msg.sender
+        });
+        string memory roleStr = _role == ROLE.CIVILIAN ? "CIVILIAN" : "FEDRA";
+        emit CustomerRegistrationKorse(msg.sender, roleStr);
+    }
 }
