@@ -91,7 +91,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
 
     // ============= Core 
     // Registered user 
-    function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public{
+    function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public shudhuAdmin{
         require(customers[msg.sender].role == ROLE.None, "Already registered");
         require(_role == ROLE.CIVILIAN || _role == ROLE>FEDRA, "The Role is INVALID");
 
@@ -113,7 +113,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
         string memory DescriptionOfLost,
         string memory DivisionOfLost,
         string memory ContactWhom
-    ) public {
+    ) public onlyCustomerReg{
         require(customers[msg.sender].role == ROLE.CIVILIAN, "Anomaly can be reported ONLY by CIVILIANS.");
 
         URGENCY urgencyLevel;
@@ -147,7 +147,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
     }
     
     // Core function 3: Status Update 
-    function updateTheStatus(uint256 _caseNum, STATUS _newStatus) public {
+    function updateTheStatus(uint256 _caseNum, STATUS _newStatus) public shudhuAdmin{
         require(customers[msg.sender].role == ROLE.ADMIN, "Authorized Personnel aka ADMIN only");
         require(_caseNum < NextCaseNum, "Case Number is Invalid, REJECTED");
 
@@ -183,7 +183,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
     uint256 _caseNum,
     address _fedra,
     uint256 _slotTime
-    ) public payable {
+    ) public payable onlyCustomerReg{
     // CHECK CONDITIONS
     require(customers[msg.sender].role == ROLE.CIVILIAN, "Only CIVILIAN can book");
     require(_caseNum < NextCaseNum, "Invalid case number");
