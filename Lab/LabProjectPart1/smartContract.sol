@@ -65,16 +65,22 @@ contract LokJonHarayGese{
     // modifier
 
     modifier shudhuAdmin(){
-
+        require(customers[msg.sender].role == ROLE.ADMIN, "Access Denied: Only Admins Can Access");
+        _;
     }
 
-    modifier shudhuJeReportKorse(){
+modifier shudhuJeReportKorse(uint256 _caseNum) {
+    require(_caseNum < NextCaseNum, "Case number is not valid.");
+    require(cases[_caseNum].whoReported == msg.sender, "Not the original reporter");
+    _;
+}
 
-    }
 
-    modifier onlyCustomerReg(){
+ modifier onlyCustomerReg() {
+    require(customers[msg.sender].role != ROLE.None, "You must register first");
+    _;
+}
 
-    }
 
     // constructor
     constructor(){
