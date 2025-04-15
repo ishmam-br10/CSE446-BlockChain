@@ -60,7 +60,7 @@ contract LokJonHarayGese{
     event HarayJawaReported(uint256 CaseNum);
     event StatusUpdateKorsi(uint256 CaseNum, string newStatus);
     event FEDRAassigned(uint256 CaseNum, address fedra);
-    event AppointmentBookKorse(address whoReported, address fedra, uint time);
+    event EAppointmentBookKorse(address whoReported, address fedra, uint time);
 
     // modifier
 
@@ -93,7 +93,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
     // Registered user 
     function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public shudhuAdmin{
         require(customers[msg.sender].role == ROLE.None, "Already registered");
-        require(_role == ROLE.CIVILIAN || _role == ROLE>FEDRA, "The Role is INVALID");
+        require(_role == ROLE.CIVILIAN || _role == ROLE.FEDRA, "The ROLE is INVALID");
 
         customers[msg.sender] = customer({
             name: _name,
@@ -105,7 +105,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
         emit CustomerRegistrationKorse(msg.sender, roleStr);
     }
 
-    # core function 2: Report missing
+    // core function 2: Report missing
     function harayJawaReportKorseJe(
         string memory nameOfLost,
         uint256 ageOfLost,
@@ -128,19 +128,21 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
         }
 
         harayGeseJe memory newCase = harayGeseJe({
-            CaseNum: NextCaseNum,
-            nameOfLost: nameOfLost,
-            ageOfLost: ageOfLost,
-            heightOfLost: heightOfLost,
-            status: STATUS.HarayGese,
-            DescriptionOfLost: DescriptionOfLost,
-            DivisionOfLost: DivisionOfLost,
-            ContactWhom: ContactWhom,
-            urgency: urgencyLevel,
-            fedra: address(0)
-        })
+        CaseNum: NextCaseNum,
+        nameOfLost: nameOfLost,
+        ageOfLost: ageOfLost,
+        heightOfLost: heightOfLost,
+        status: STATUS.HarayGese,
+        DescriptionOfLost: DescriptionOfLost,
+        DivisionOfLost: DivisionOfLost,
+        ContactWhom: ContactWhom,
+        urgency: urgencyLevel,
+        whoReported: msg.sender,
+        fedra: address(0)
+        });
 
-        cases[NextCaseNum] = newCase;
+    cases[NextCaseNum] = newCase;
+
         DivisionCount[DivisionOfLost]++;
         emit HarayJawaReported(NextCaseNum);
         NextCaseNum++;
@@ -204,7 +206,7 @@ modifier shudhuJeReportKorse(uint256 _caseNum) {
     // Transfer ETH
     payable(contractOwnedBy).transfer(msg.value);
 
-    emit AppointmentBookKorse(msg.sender, _fedra, _slotTime);
+    emit EAppointmentBookKorse(msg.sender, _fedra, _slotTime);
     }
     
 
