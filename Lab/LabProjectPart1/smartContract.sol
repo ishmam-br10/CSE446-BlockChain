@@ -171,4 +171,36 @@ contract LokJonHarayGese{
 
         emit FEDRAassigned(_caseNum, _fedra);
     }
+
+    // Core Function 5 
+    function AppointmentBookKorse(
+    uint256 _caseNum,
+    address _fedra,
+    uint256 _slotTime
+    ) public payable {
+    // CHECK CONDITIONS
+    require(customers[msg.sender].role == ROLE.CIVILIAN, "Only CIVILIAN can book");
+    require(_caseNum < NextCaseNum, "Invalid case number");
+    require(customers[_fedra].role == ROLE.FEDRA, "Not a FEDRA");
+    require(msg.value >= 0.05 ether, "Minimum 0.05 ETH required");
+    require(!SlotBooked[_slotTime][_fedra], "Slot already booked");
+
+    // Book it
+    SlotBooked[_slotTime][_fedra] = true;
+
+    FedraSchedule[_fedra].push(AppointmentForMissing({
+        CaseNum: _caseNum,
+        fedra: _fedra,
+        time: _slotTime,
+        BookedByWhom: msg.sender
+    }));
+
+    // Transfer ETH
+    payable(contractOwnedBy).transfer(msg.value);
+
+    emit AppointmentBookKorse(msg.sender, _fedra, _slotTime);
+}
+
+
+
 }
