@@ -199,8 +199,13 @@ contract LokJonHarayGese{
     payable(contractOwnedBy).transfer(msg.value);
 
     emit AppointmentBookKorse(msg.sender, _fedra, _slotTime);
+    }
+    
+
+
+    // CORE FUNCTION 6
+    function DekhteChaiSchedule(address _fedra) public view returns (AppointmentForMissing[] memory) {
+    require(customers[_fedra].role == ROLE.FEDRA, "Not a valid FEDRA");
+    return FedraSchedule[_fedra];
 }
-
-
-
 }
