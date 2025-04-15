@@ -108,7 +108,7 @@ contract LokJonHarayGese{
         string memory DivisionOfLost,
         string memory ContactWhom
     ) public {
-        require(customers[msg.sender].role == ROLE.CIVILIAN, "Anomaly can be reported ONLY by CIVILIANS.")
+        require(customers[msg.sender].role == ROLE.CIVILIAN, "Anomaly can be reported ONLY by CIVILIANS.");
 
         URGENCY urgencyLevel;
         if (ageOfLost < 18){
@@ -140,4 +140,21 @@ contract LokJonHarayGese{
         NextCaseNum++;
     }
     
+    // Core function 3: Status Update 
+    function updateTheStatus(uint256 _caseNum, STATUS _newStatus) public {
+        require(customers[msg.sender].role == ROLE.ADMIN, "Authorized Personnel aka ADMIN only");
+        require(_caseNum < NextCaseNum, "Case Number is Invalid, REJECTED");
+
+        harayGeseJe storage caseToUpdate = cases[_caseNum];
+
+        require(caseToUpdate.status == STATUS.HarayGese, "Redundant Operation, Case already marked as FOUND");
+        require(_newStatus == STATUS.PawaGese, "Status is not valid to update");
+
+        caseToUpdate.status = _newStatus;
+        emit StatusUpdateKorsi(_caseNum, "PawaGese");
+    }
+
+    // Core function 4: Fedra assign
+
+    function 
 }
