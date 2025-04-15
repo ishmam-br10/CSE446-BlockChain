@@ -156,5 +156,19 @@ contract LokJonHarayGese{
 
     // Core function 4: Fedra assign
 
-    function 
+    function FEDRAAssignKorsi(uint256 _caseNum, address _fedra) public {
+        require(customers[msg.sender].role == ROLE.ADMIN, "FEDRA can be assigned by authorised personnel only.");
+        require(_caseNum < NextCaseNum, "Case Number is Invalid, REJECTED");
+        require(customers[_fedra].role == ROLE.FEDRA, "Selected is not FEDRA");
+        harayGeseJe storage theCase = cases[_caseNum];
+        require(theCase.fedra == address(0), "Cannot assign the same FEDRA for two Cases.");
+        // condition checks done
+
+        // assigned
+        theCase.fedra = _fedra;
+        CaseToFedra[_caseNum] = _fedra;
+        FedraCases[_fedra].push(_caseNum);
+
+        emit FEDRAassigned(_caseNum, _fedra);
+    }
 }
