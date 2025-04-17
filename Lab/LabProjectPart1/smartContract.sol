@@ -91,9 +91,9 @@ contract LokJonHarayGese{
 
     // ============= Core 
     // Registered user 
-    function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public shudhuAdmin{
-        require(customers[msg.sender].role == ROLE.None, "Already registered");
-        require(_role == ROLE.CIVILIAN || _role == ROLE.FEDRA, "The ROLE is INVALID");
+    function registerCustomer(string memory _name, string memory _NIDcard, ROLE _role) public {
+        // require(customers[msg.sender].role == ROLE.None, "Already registered");
+        // require(_role == ROLE.CIVILIAN || _role == ROLE.FEDRA, "The ROLE is INVALID");
 
         customers[msg.sender] = customer({
             name: _name,
