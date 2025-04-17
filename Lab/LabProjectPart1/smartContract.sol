@@ -189,7 +189,8 @@ contract LokJonHarayGese{
     // CHECK CONDITIONS
     require(customers[msg.sender].role == ROLE.CIVILIAN, "Only CIVILIAN can book");
     require(_caseNum < NextCaseNum, "Invalid case number");
-    require(customers[_fedra].role == ROLE.FEDRA, "Not a FEDRA");
+    require(customers[_fedra].role == ROLE.FEDRA, "Provided address is not a registered FEDRA"); // missed this line before :(( checking the logic and condition added this
+    require(CaseToFedra[_caseNum] == _fedra, "This FEDRA is not assigned to the selected case");
     require(msg.value >= 0.05 ether, "Minimum 0.05 ETH required");
     require(!SlotBooked[_slotTime][_fedra], "Slot already booked");
 
