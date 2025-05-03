@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LokJonHarayGese DApp</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container" style="max-width: 650px;">
+    <h1 class="text-center mt-4">🔍 LokJonHarayGese</h1>
+    <hr />
+    <p id="userRoleBanner" class="alert alert-secondary text-center">
+      🔍 Detecting role...
+    </p>
+    
+
+    <!-- Registration Form -->
+    <h3>User Registration</h3>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" id="name" placeholder="Enter name" />
+    </div>
+    <div class="form-group">
+      <label for="nid">NID</label>
+      <input class="form-control" type="text" id="nid" placeholder="Enter NID" />
+    </div>
+    <div class="form-group">
+      <label for="role">Role</labeWelcome back!
+        The decentralized web awaits
+        Password
+        l>
+      <select class="form-control" id="role">
+        <option value="1">CIVILIAN</option>
+        <option value="2">FEDRA</option>
+      </select>
+    </div>
+    <button id="registerBtn" class="btn btn-primary">Register</button>
+
+        <hr />
+        <p id="accountAddress" class="text-center text-muted"></p>
+      </div>
+      <hr />
+      <!-- Report Missing Person Form -->
+    <h3>Report Missing Person</h3>
+    <div class="form-group">
+      <label for="mp-name">Name of Lost Person</label>
+      <input class="form-control" type="text" id="mp-name" />
+    </div>
+    <div class="form-group">
+      <label for="mp-age">Age</label>
+      <input class="form-control" type="number" id="mp-age" />
+    </div>
+    <div class="form-group">
+      <label for="mp-height">Height (cm)</label>
+      <input class="form-control" type="number" id="mp-height" />
+    </div>
+    <div class="form-group">
+      <label for="mp-description">Description</label>
+      <input class="form-control" type="text" id="mp-description" />
+    </div>
+    <div class="form-group">
+      <label for="mp-division">Division</label>
+      <input class="form-control" type="text" id="mp-division" placeholder="e.g., Dhaka" />
+    </div>
+    <div class="form-group">
+      <label for="mp-contact">Contact</label>
+      <input class="form-control" type="text" id="mp-contact" />
+    </div>
+    <button id="reportBtn" class="btn btn-warning">Report</button>
+    <hr />
+    <h3>Book Appointment with FEDRA</h3>
+    <div class="form-group">
+      <label for="caseNum">Case Number</label>
+      <input class="form-control" type="number" id="caseNum" placeholder="e.g., 0" />
+    </div>
+    <div class="form-group">
+      <label for="fedraAddress">FEDRA Address</label>
+      <input class="form-control" type="text" id="fedraAddress" placeholder="0x..." />
+    </div>
+    <div class="form-group">
+      <label for="slotTime">Slot Time (Unix Timestamp)</label>
+      <input class="form-control" type="number" id="slotTime" placeholder="e.g., 1713953200" />
+    </div>
+    <div class="form-group">
+      <label for="ethAmount">Payment Amount (ETH)</label>
+      <input class="form-control" type="text" id="ethAmount" value="0.05" disabled />
+    </div>
+    <button id="bookBtn" class="btn btn-success">Book</button>
+
+    <hr />
+    <h3>Update Case Status (Admin Only)</h3>
+    <div class="form-group">
+      <label for="statusCaseNum">Case Number</label>
+      <input class="form-control" type="number" id="statusCaseNum" placeholder="e.g., 0" />
+    </div>
+    <div class="form-group">
+      <label for="newStatus">New Status</label>
+      <select class="form-control" id="newStatus">
+        <option value="1">PawaGese (Found)</option>
+        <!-- If you support other statuses like Reinvestigate, add here -->
+      </select>
+    </div>
+    <button id="statusBtn" class="btn btn-secondary">Update Status</button>
+    <hr />
+    <h3>View FEDRA Appointment Schedule</h3>
+    <div class="form-group">
+      <label for="scheduleFedraAddr">FEDRA Address</label>
+      <input class="form-control" type="text" id="scheduleFedraAddr" placeholder="0x..." />
+    </div>
+    <button id="scheduleBtn" class="btn btn-info">View Schedule</button>
+
+    <ul id="scheduleList" class="list-group mt-3"></ul>
+    <hr />
+    <h3>Search Missing Cases by Division</h3>
+    <div class="form-group">
+      <label for="divisionInput">Division Name</label>
+      <input class="form-control" type="text" id="divisionInput" placeholder="e.g., Dhaka" />
+    </div>
+    <button id="divisionBtn" class="btn btn-dark">Search</button>
+    <p id="divisionResult" class="mt-3 text-primary font-weight-bold"></p>
+
+    
+
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!-- <script src="js/web3.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <!-- <script src="js/truffle-contract.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@truffle/contract@4.5.0/dist/truffle-contract.min.js"></script>
+  <!-- <script src="js/app.js"></script>-->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
